@@ -9,15 +9,19 @@ cls
 
 set this="%~dp0"
 
+cd %this%\\..\\
+
 echo " -> Gerando as classes..."
-call %this%\\..\\gradlew.bat build
+call gradlew.bat build
 
 if %ERRORLEVEL% neq 0 goto error
 
 echo " -> Criando o runtime.."
-call %this%\\..\\gradlew.bat jlink
+call gradlew.bat jlink
 
 if %ERRORLEVEL% neq 0 goto error
+
+cd %this%
 
 echo " -> Copiando a livraria necessária..."
 call %this%\\cpreqtomodulelibs.bat
