@@ -8,4 +8,6 @@ build
 scripts/native_ihaclib
 native_ihaclib
 
+windows_portable/app
+
 /*.AppImage
