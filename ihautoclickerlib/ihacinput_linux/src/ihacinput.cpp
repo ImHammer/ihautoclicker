@@ -50,7 +50,7 @@ const std::vector<uint16> requiredKeys({
     BTN_TASK
 });
 
-void running(struct libevdev* const evdev, const struct libevdev_uinput* evdevUInput)
+void running_real_inputs(struct libevdev* const evdev, const struct libevdev_uinput* evdevUInput)
 {
     struct input_event ev;
 
@@ -62,7 +62,13 @@ void running(struct libevdev* const evdev, const struct libevdev_uinput* evdevUI
         {
             libevdev_uinput_write_event(evdevUInput, ev.type, ev.code, ev.value);
         }
+    } while (rc == 1 || rc == 0 || rc == -EAGAIN);
+}
 
+void running_fake_inputs(struct libevdev* const evdev, const struct libevdev_uinput* evdevUInput)
+{
+    while(true)
+    {
         if (ihacinput::clicks > 0) {
             libevdev_uinput_write_event(evdevUInput, EV_SYN, SYN_REPORT, 0);
             libevdev_uinput_write_event(evdevUInput, EV_KEY, ihacinput::buttonType, 1);
@@ -74,7 +80,7 @@ void running(struct libevdev* const evdev, const struct libevdev_uinput* evdevUI
 
             ihacinput::clicks--;
         }
-    } while (rc == 1 || rc == 0 || rc == -EAGAIN);
+    }
 }
 
 // Usada para iniciar algumas partes necessárias para o funcionament do AC
@@ -137,8 +143,10 @@ bool ihacinput_init()
     }
 
     if (founded) {
-        std::thread runningThread(running, evdev, evdevUInput);
-        runningThread.detach();
+        std::thread runningReal(running_real_inputs, evdev, evdevUInput);
+        runningReal.detach();
+        std::thread runningFake(running_fake_inputs, evdev, evdevUInput);
+        runningFake.detach();
     } else {
         return false;
     }

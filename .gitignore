@@ -1,5 +1,6 @@
 # Ignore Gradle project-specific cache directory
 .gradle
+.vscode
 
 # Ignore Gradle build output directory
 build
@@ -7,6 +8,5 @@ dist
 out
 
 # Ignore my personal directories
-plugins
 /*.AppImage
 windows_portable/app
