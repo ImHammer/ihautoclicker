@@ -3,11 +3,10 @@
 
 # Ignore Gradle build output directory
 build
+dist
+out
 
 # Ignore my personal directories
-scripts/native_ihaclib
-native_ihaclib
-
-windows_portable/app
-
+plugins
 /*.AppImage
+windows_portable/app

@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                // "${workspaceFolder}/**",
+                "${workspaceFolder}/public",
+                "${JAVA_HOME}/include",
+                "${JAVA_HOME}/include/linux",
+                "/usr/include/libevdev-1.0",
+                "/usr/include/libevdev-1.0/libevdev"
+                // "/usr/x86_64-w64-mingw32/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
