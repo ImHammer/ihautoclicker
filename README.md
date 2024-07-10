@@ -3,6 +3,7 @@ Auto clicker criado para fins experimentais e de aprendizado
 
 ### Dependências
 + evdev library `Linux`
++ Necessário executar o AppImage com super usuario `Linux`
 
 ### Tecnologias
 - Java: Usado como interface gráfica principal atrávez do JavaFX, e o tambem foi utilizado o JNI para a utilização das livrarias nativas para o funcionamento de inputs do mosue

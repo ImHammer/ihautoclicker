@@ -8,5 +8,5 @@ dist
 out
 
 # Ignore my personal directories
-/*.AppImage
+*.AppImage
 windows_portable/app
